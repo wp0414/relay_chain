@@ -1,0 +1,16 @@
+# do not use same port(no matter rpc or http) when there are more than one server.
+listen:
+  rpc: localhost:1240
+
+# type is only [chainmaker] or [fabric], chainId is unique.
+chain:
+  type: chainmaker
+  config: ./configs/chainmaker/chain3/sdk_config_org2_client1.yml
+  chainId: chain3
+
+# notify the error of same name.
+db:
+  dbFile: ./store/relay-chain_consensus_db
+
+# mode mean this application work mode, one of consensus and listen
+mode: consensus

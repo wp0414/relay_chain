@@ -1,0 +1,13 @@
+listen:
+  rpc: localhost:1233
+
+chain:
+  type: fabric
+  config: ./configs/fabric/fabric_sdk.yml
+  chainId: mychannel
+
+db:
+  dbFile: ./store/fabric1_db
+
+# mode mean this application work mode, one of consensus and listen
+mode: listen

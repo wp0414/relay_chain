@@ -1,0 +1,17 @@
+# do not use same port(no matter rpc or http) when there are more than one server.
+listen:
+  rpc: localhost:1238
+
+# type is only [chainmaker] or [fabric], chainId is unique.
+chain:
+  type: flato
+  config: ./configs/flato
+  chainId: flato
+  address: 0xa61a538de147166184b33c1e12ae0c5ddb9702db
+
+# notify the error of same name.
+db:
+  dbFile: ./store/flato_db
+
+# mode mean this application work mode, one of consensus and listen
+mode: listen

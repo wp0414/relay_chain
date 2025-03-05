@@ -1,0 +1,69 @@
+syntax = "proto3";
+
+// protoc --go_out=. --go-grpc_out=. tx.proto
+
+option go_package = "../pb;pb";
+package pb;
+
+message Transaction {
+  string ContractName = 1;
+  string Method = 2;
+  map<string, string> Params = 3;
+}
+
+message ChainTransaction {
+  string chainId = 1;
+  Transaction ExecuteTransaction = 2;
+  Transaction RollbackTransaction = 3;
+}
+
+message ChainRPCAdd {
+  string ListenIP = 1;
+  repeated string ConsensusIPs = 2;
+}
+
+message Prof {
+  string Key = 1;
+  string Result = 2;
+}
+
+message Request {
+  string CrossId = 1;
+  string Origin = 2;
+  map<string,ChainTransaction> Transactions = 3;
+  map<string,ChainRPCAdd> RPCAdds = 4;
+  map<string,Prof> Profs = 5;
+}
+
+message RPCReply {
+  string ChainId = 1;
+  bool Success = 2;
+  Prof Prof = 3;
+}
+
+message Response {
+  string CrossId = 1;
+  bool Success = 2;
+  bool Done = 3;
+  map<string,RPCReply> Result = 4;
+}
+
+
+service Service {
+  // Invoke receive request and invoke business contract on this chain with execute transaction, and return reply.
+  rpc Invoke(Request) returns (RPCReply);
+
+  // Commit response on this chain, and return reply.
+  rpc Commit(Response) returns (RPCReply);
+
+  // Rollback receive request and invoke business contract on this chain with rollback transaction, and return reply.
+  rpc Rollback(Request) returns (RPCReply);
+
+  // Prove receive Prof(only include key,key means transaction id, result is nil), return Prof(result will be written, result is contract execute result).
+  rpc Prove(Prof) returns (Prof);
+
+  // GetResponse receive Prof(only include key,key means crossId, result is nil), return Prof(result will be written, result is response json string).
+  rpc GetResponse(Prof) returns (Prof);
+
+  rpc DealRequest(Request) returns (Response);
+}

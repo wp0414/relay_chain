@@ -1,0 +1,13 @@
+listen:
+  rpc: localhost:1235
+
+chain:
+  type: chainmaker
+  config: ./configs/chainmaker/chain2/sdk_config_org2_client1.yml
+  chainId: chain2
+
+db:
+  dbFile: ./store/chain2_db
+
+# mode mean this application work mode, one of consensus and listen
+mode: listen

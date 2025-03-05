@@ -1,0 +1,98 @@
+
+# GoSDK v1.3.1-7 配置文件标题
+# GoSDK v1.3.1-7  Configuration File Title
+title = "GoSDK configuratoin file by Blocface"
+# 访问区块链的指定命名空间
+# Connect to Blockchain's Target Namespace
+namespace = "global"
+# 发送重新连接请求间隔（次/毫秒）
+# Reconnect Time Intervale (times/ms)
+reConnectTime = 1000
+[jsonRPC]
+# 区块链节点IP
+# Blockchain Nodes' IPs
+nodes = ["192.168.206.128", ]
+# JSON-RPC连接端口
+# Blockchain Nodes' JSON-RPC Hosts
+ports = ["8081", ]
+[webSocket]
+# Web-Socket连接端口
+# Blockchain Nodes' Web-Socket Hosts
+ports = ["0", ]
+[polling]
+# 重发次数
+# Resend Times
+resendTime = 10
+# 第一次轮训交易回执时间间隔 (times/ms)
+# First Polling Interval For Transaction Receipt
+firstPollingInterval = 100
+# 第一次轮训交易回执的次数
+# First Polling Time For Transaction Receipt
+firstPollingTimes = 10
+# 第二次轮训交易回执的时间间隔 (times/ms)
+# Second Polling Interval For Transaction Receipt
+secondPollingInterval = 1000
+# 第二次轮训交易回执的次数
+# Second Polling Time For Transaction Receipt
+secondPollingTimes = 10
+[privacy]
+# 是否有可能需要发送隐私交易
+# Send Tcert During the Request or Not
+sendTcert = false
+# 如果需要发送隐私交易，则设置下面的证书路径
+# 这些证书路径是相对与根配置路径的
+# If SendTcert is True , You Should Add Follow Paths
+# The Paths Followed Are Relative to Conf Root Paths
+# 从区块链节点证书签发的SDK证书
+# The SDK Cert Signed From Blockchain Node's Cert
+sdkcertPath = "./node1/sdkcert/sdkcert.cert"
+# 从区块链节点证书签发的SDK证书私钥
+# The SDK Cert Private Key Signed From Blockchain Node's Cert
+sdkcertPrivPath = "./node1/sdkcert/key.priv"
+# SDK客户端自己的公钥
+# The Public Key of SDK Client
+uniquePubPath = "./node1/sdkcert/key.pub"
+# SDK客户端自己的私钥
+# The Private Key of SDK Client
+uniquePrivPath = "./node1/sdkcert/key.priv"
+# 是否使用中国金融认证中心CFCA的证书
+# Whether to Use CFCA Certificate of China Financial Certification Center
+cfca = true
+[security]
+# 是否发送HTTPS请求
+# Whether to Use Https
+https = false
+# 如果HTTPS请求，则设置下面的证书路径
+# 这些证书路径是相对与根配置路径的
+# If HTTPS Is True, You Shoule Add Follow Paths
+# The Paths Followed Are Relative to Conf Root Path
+# 安全传输层协议的区块链服务器根证书
+# TLS Blockchain Server's CA
+tlsca = "certs/tls/tlsca.ca"
+# 安全传输层协议的SDK客户端证书
+# TLS SDK Client Cert
+tlspeerCert = "certs/tls/tls_peer.cert"
+# 安全传输层协议的SDK客户端私钥
+# TLS SDK Client Private Key
+tlspeerPriv = "certs/tls/tls_peer.priv"
+[log]
+# 设置日志输出门槛
+# Set Log Level
+# "CRITICAL","ERROR","WARNING","NOTICE","INFO","DEBUG",
+log_level = "ERROR"
+#存放日志文件夹
+log_dir = "./logs"
+[transport]
+# MaxIdleConns 控制所有主机的最大空闲长连接请求数
+# maxIdleConns = 0 表示无限大
+# MaxIdleConns Controls The Maximum Number of Idle (Keep-Alive)
+# Connections Across All Hosts. Zero Means No Limit
+maxIdleConns = 0
+# MaxIdleConnsPerHost 如果非零，控制每个主机的最大空闲长连接数
+# maxIdleConnsPerHost = 0 表示使用默认值2
+# MaxIdleConnsPerHost, If Non-Zero, Controls The Maximum Idle
+# (Keep-Alive) Connections to Keep Per-Host. If Zero,
+# DefaultMaxIdleConnsPerHost = 2 Is Used
+maxIdleConnsPerHost = 10
+[tx]
+version = "1.0"
